@@ -1,0 +1,35 @@
+#!/bin/sh
+
+
+YEAR=2014
+
+echo "================================================================"
+echo "Total Contribution breakdown by year (averaged)"
+echo "-----------------------------------------------"
+ledger reg income:paycheck:401k --yearly -n -A
+
+echo "================================================================"
+echo "Account Contribution Breakdown by year"
+echo "--------------------------------------"
+ledger reg income:paycheck:401k --yearly 
+
+echo "================================================================"
+echo "Account Contribution Balance for $YEAR"
+echo "--------------------------------------"
+ledger bal income:paycheck:401k -p $YEAR
+
+
+# Assumption is that there's really only once matching date per year. 
+# If that changes, report needs to be updated.
+echo "================================================================"
+echo "Matching Contributions by Date"
+echo "------------------------------"
+ledger bal 401k:Trad:Match  -I --group-by "date"
+
+
+
+
+
+
+
+
