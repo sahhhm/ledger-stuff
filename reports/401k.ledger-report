@@ -1,12 +1,22 @@
 #!/bin/sh
 
-
 YEAR=2014
 
 echo "================================================================"
-echo "Total Contribution breakdown by year (averaged)"
-echo "-----------------------------------------------"
+echo "Current Value"
+echo "-------------"
+ledger bal assets and 401k -V
+
+echo "================================================================"
+echo "Total Contribution breakdown by year (averaged) (including match)"
+echo "-----------------------------------------------------------------"
 ledger reg income:paycheck:401k --yearly -n -A
+
+echo "================================================================"
+echo "Total Contribution breakdown by year (averaged) (excluding match)"
+echo "----------------------------------------------------------------"
+ledger reg income:paycheck:401k and not match --yearly -n -A
+
 
 echo "================================================================"
 echo "Account Contribution Breakdown by year"

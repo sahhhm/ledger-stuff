@@ -2,7 +2,7 @@
 
 # Assumes all dividend or capital gain transactions are marked with Action=Dividend or Action=CapitalGains
 
-YEAR=2014
+YEAR=2015
 
 echo "================================================================"
 echo "Dividends and Capital Gains Balance by Brokerage Account"
@@ -19,4 +19,9 @@ echo "Dividends and Capital Gains Register by Commodity Reg"
 echo "-----------------------------------------------------"
 ledger -p $YEAR reg brokerage and %Action=dividend or %Action=capitalgains -I --group-by "commodity" 
 
-
+echo "================================================================"
+echo "Dividends and Capital Gains Balance by Brokerage Account"
+echo "--------------------------------------------------------"
+ledger reg brokerage and %Action=dividend or %Action=capitalgains  --yearly --related 
+echo "--------------------------------------------------------"
+ledger reg brokerage and %Action=dividend or %Action=capitalgains  --yearly --related -n

@@ -1,0 +1,24 @@
+#!/bin/sh
+
+
+echo "================================================================"
+echo "Current Monthly Expenses"
+echo "------------------------"
+echo "All"
+ledger -p "this month" -n bal expenses 
+echo "Excluding :nobudget:"
+ledger -p "this month" -n bal expenses and not "expr" "note =~ /nobudget/"
+echo "================================================================"
+echo "Current Expenses (reg)"
+echo "----------------------"
+ledger -p "this month" -S total reg expenses 
+echo "================================================================"
+echo "Monthly Expenses - Average"
+echo "--------------------------"
+ledger reg --period-sort '(-amount)' --real --effective  --monthly expenses -n -A
+
+
+
+
+
+
